@@ -1,0 +1,7 @@
+FROM wordpress
+
+ENV WORDPRESS_DB_HOST=learn_mysql \
+    WORDPRESS_DB_USER=root \
+    WORDPRESS_DB_PASSWORD=123 \
+    WORDPRESS_DB_NAME=wordpress \
+    WORDPRESS_TABLE_PREFIX=wp_
