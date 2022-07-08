@@ -1,10 +1,11 @@
 pipeline {
 
-  agent none
-
-  environment {
-    DOCKER_IMAGE = "wordpress"
-  }
+    agent {
+        docker {
+            image 'wordpress'
+            args '-u root'
+        }
+    }
 
     stages {
         stage('Build') {
@@ -20,13 +21,4 @@ pipeline {
             }
         }
     }
-
-  post {
-    success {
-      echo "SUCCESSFUL"
-    }
-    failure {
-      echo "FAILED"
-    }
-  }
 }
