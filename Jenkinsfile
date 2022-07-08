@@ -1,11 +1,6 @@
 pipeline {
 
-    agent {
-        docker {
-            image 'wordpress'
-            args '-u root'
-        }
-    }
+    agent none
 
     stages {
         stage('Build') {
