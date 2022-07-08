@@ -1,19 +1,29 @@
 pipeline {
-
-    agent none
+    agent { label 'Dev01' }
 
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
-                sh 'npm install'
+                echo 'Building..'
             }
         }
-        stage('Dev01') {
+        stage('Test') {
             steps {
-                echo 'Testing...'
-                sh 'npm test'
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
+    post {
+    success {
+      echo "SUCCESSFUL"
+    }
+    failure {
+      echo "FAILED"
+    }
+  }
 }
