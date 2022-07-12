@@ -3,7 +3,6 @@ pipeline {
     environment {
         REPO = 'ngocqui1609/wordpress'
         PRIVATE_REPO = "${PRIVATE_REGISTRY}/${REPO}"
-        DOCKER_PRIVATE = credentials('docker-private-registry')
     }
     stages {
         stage ('Checkout') {
