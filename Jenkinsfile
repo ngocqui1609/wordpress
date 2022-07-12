@@ -6,27 +6,27 @@ pipeline {
         DOCKER_PRIVATE = credentials('docker-private-registry')
     }
     stages {
-//         stage ('Checkout') {
-//             steps {
-//                 script {
-//                     COMMIT = "${GIT_COMMIT.substring(0,8)}"
+        stage ('Checkout') {
+            steps {
+                script {
+                    COMMIT = "${GIT_COMMIT.substring(0,8)}"
 
-//                     if ("${BRANCH_NAME}" == "master"){
-//                         TAG   = "latest"
-//                         NGINX = "nginx"
-//                         FPM   = "fpm"
-//                         CLI   = "cli"
-//                     }
-//                     else {
-//                         TAG   = "${BRANCH_NAME}"
-//                         NGINX = "${BRANCH_NAME}-nginx"
-//                         FPM   = "${BRANCH_NAME}-php7.1-fpm"
-//                         CLI   = "${BRANCH_NAME}-cli"                      
-//                     }
-//                 }
-//                 sh 'printenv'
-//             }
-//         }
+                    if ("${BRANCH_NAME}" == "master"){
+                        TAG   = "latest"
+                        NGINX = "nginx"
+                        FPM   = "fpm"
+                        CLI   = "cli"
+                    }
+                    else {
+                        TAG   = "${BRANCH_NAME}"
+                        NGINX = "${BRANCH_NAME}-nginx"
+                        FPM   = "${BRANCH_NAME}-php7.1-fpm"
+                        CLI   = "${BRANCH_NAME}-cli"                      
+                    }
+                }
+                sh 'printenv'
+            }
+        }
         stage ('Docker build Micro-Service') {
             parallel {
                 stage ('Wodpress Nginx'){
