@@ -17,7 +17,7 @@ pipeline {
                 echo 'Deploying....'
             }
         }
-         stage('Approval') {
+        stage('Approval') {
             // no agent, so executors are not used up when waiting for approvals
             when { changeset "vm-management/create-vm/**"}
             agent none
